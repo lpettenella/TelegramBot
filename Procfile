@@ -1,1 +1,1 @@
-worker: python TelegramBot.py
+worker: python /src/TelegramBot.py
