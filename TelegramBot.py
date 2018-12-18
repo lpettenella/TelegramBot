@@ -11,7 +11,7 @@ from random import randint
 from Domanda import Domanda
 from Utente import Utente
 
-bot = telepot.Bot('548040088:AAFs8Y1Msb4367WkDth_HF30hM2j-yXenNQ')
+bot = telepot.Bot('670588262:AAG069-aIzJwzp6bo8G-H78HvOTgm04eyxs')
 dataBase = DataBase()
 domande = list()
 insulti = list()
