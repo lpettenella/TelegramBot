@@ -19,6 +19,7 @@ class DataBase():
     def addChat_id(self, chatid, db):
         if(self.chatList.__contains__(chatid)==False):
             self.chatList.append(chatid)
+            print("fatto")
             db.add_chat("chat", chatid)
             chat = Chat()
             chat.chat_id = chatid
@@ -31,6 +32,7 @@ class DataBase():
                 if(chats.messaggi.__contains__(mex)==False):
                     chats.messaggi.append(mex)
                     db.add_item("messaggi", mex, chatid)
+                    print("fatto")
                     if len(chats.messaggi) >= 1000:
                         nuova = chats.messaggi[len(chats.messaggi)//2:]
                         chats.messaggi = nuova
