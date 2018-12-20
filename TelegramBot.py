@@ -10,7 +10,7 @@ from pprint import pprint
 from random import randint
 from Domanda import Domanda
 from Utente import Utente
-from dbhelper import DBhelper
+from dbhelper import DBHelper
 
 bot = telepot.Bot('670588262:AAG069-aIzJwzp6bo8G-H78HvOTgm04eyxs')
 dataBase = DataBase()
@@ -27,7 +27,7 @@ complimenti.append("ti amo")
 def handle(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
     print(content_type, chat_type, chat_id)
-    db = DBhelper()
+    db = DBHelper()
 
     dataBase.addChat_id(chat_id, db)
     dataBase.addUtente(msg['from']['id'])
