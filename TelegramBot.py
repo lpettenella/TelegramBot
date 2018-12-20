@@ -29,8 +29,8 @@ def handle(msg):
     print(content_type, chat_type, chat_id)
     db = DBhelper()
 
-    dataBase.addChat_id(chat_id)
-    dataBase.addUtente(msg['from']['id'], db)
+    dataBase.addChat_id(chat_id, db)
+    dataBase.addUtente(msg['from']['id'])
     if(content_type == 'text'):
         dataBase.addMex(chat_id, msg['text'], db)
                
