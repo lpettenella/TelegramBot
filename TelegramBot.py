@@ -10,6 +10,7 @@ from pprint import pprint
 from random import randint
 from Domanda import Domanda
 from Utente import Utente
+import dbhelper
 from dbhelper import DBHelper
 
 bot = telepot.Bot('670588262:AAG069-aIzJwzp6bo8G-H78HvOTgm04eyxs')
