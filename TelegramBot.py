@@ -10,6 +10,7 @@ from pprint import pprint
 from random import randint
 from Domanda import Domanda
 from Utente import Utente
+from dbhelper import DBhelper
 
 bot = telepot.Bot('670588262:AAG069-aIzJwzp6bo8G-H78HvOTgm04eyxs')
 dataBase = DataBase()
@@ -26,11 +27,12 @@ complimenti.append("ti amo")
 def handle(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
     print(content_type, chat_type, chat_id)
+    db = DBhelper()
 
     dataBase.addChat_id(chat_id)
-    dataBase.addUtente(msg['from']['id'])
+    dataBase.addUtente(msg['from']['id'], db)
     if(content_type == 'text'):
-        dataBase.addMex(chat_id, msg['text'])
+        dataBase.addMex(chat_id, msg['text'], db)
                
         if(msg['text'] == "ciao"):
             bot.sendMessage(chat_id, "afangul")
