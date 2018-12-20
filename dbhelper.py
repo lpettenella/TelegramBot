@@ -1,7 +1,7 @@
 import sqlite3
 
 class DBHelper:
-    def __init__(self, dbname="bottest.sqlite"):
+    def __init__(self, dbname="botchat.sqlite"):
         self.dbname = dbname 
         self.conn = sqlite3.connect(dbname)
     
