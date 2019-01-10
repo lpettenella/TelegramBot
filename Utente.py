@@ -7,4 +7,6 @@ class Utente():
         self.scherzo = False
         self.mex_scherzo = 0
         self.clan = None
-    
+        self.username = None
+        self.invitato = list()
+        self.clan_inviti = list()

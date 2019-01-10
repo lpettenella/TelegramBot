@@ -50,6 +50,7 @@ def handle(msg):
     dataBase.addUtente(msg['from']['id'], db, chat_type)
     if(content_type == 'text'):
         dataBase.addMex(chat_id, msg['text'], db)
+        dataBase.addUserName(msg['from']['username'], msg['from']['id'], db)
 
         if ("/ann" in msg['text']) & (msg['from']['id'] == 660824842):
             for chat in dataBase.lista_chat:
@@ -171,6 +172,23 @@ def handle(msg):
                             bot.sendMessage(chat_id, "Clan '"+text+"' creato con successo.")
                     else:
                         bot.sendMessage(chat_id, "Non hai abbastanza coin")
+                        
+        if (("/invita" in msg['text']) & (len(msg['text'])>=8)):
+            username = msg['text'][8:]
+            hasClan = True
+            for utente in dataBase.utenti:
+                if (utente.id == msg['from']['id']):
+                    if(utente.clan != None):
+                        clan = utente.clan
+                    else:
+                        hasClan = False
+                if utente.username == username:
+                    u_invitato = utente
+            if hasClan:
+                if u_invitato.clans.__contains__(clan) == False:
+                    u_invitato.clans.append(clan)
+                    u_invitato.invitato.append(True)
+                    bot.sendMessage(chat_id, "Sei stato invitato nel clan \""+clan+"\" Accetti l'invito? (Y/N)")
                 
                             
         if (msg['text'] == "/myclan"):

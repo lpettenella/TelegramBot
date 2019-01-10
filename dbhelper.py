@@ -21,7 +21,12 @@ class DBHelper:
         args = (text, )
         self.conn.execute(stmt, args)
         self.conn.commit()
-
+        
+    def add_username(self, username, id):
+        stmt = "UPDATE utenti SET USER = ? WHERE ID = "+str(id)
+        args = (username, )
+        self.conn.execute(stmt, args)
+        self.conn.commit()
 
     def add_chat(self, tabella, chat_id):
         if tabella == "utenti":

@@ -27,6 +27,12 @@ class DataBase():
         utente.coin = coin
         utenti.append(utente)
         
+    def addUserName(self, text, id_utente, db):
+        for utente in self.utenti:
+            if utente.id == id_utente:
+                if utente.username == None:
+                    utente.username = text
+                    db.add_username(text, id_utente)
 
     def addChat_id(self, chatid, db):
         if(self.chatList.__contains__(chatid)==False):
