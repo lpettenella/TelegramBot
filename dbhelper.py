@@ -10,9 +10,9 @@ class DBHelper:
         self.conn.execute(stmt)
         self.conn.commit()
 
-    def add_item(self, tabella, item_text, chat_id):
-        stmt = "INSERT INTO "+tabella+" (ID, TESTO) VALUES (?, ?)"
-        args = (chat_id, item_text,)
+    def add_item(self, tabella, item_text, chat_id, utente_id):
+        stmt = "INSERT INTO "+tabella+" (ID, TESTO, ID_UTENTE) VALUES (?, ?, ?)"
+        args = (chat_id, item_text, utente_id)
         self.conn.execute(stmt, args)
         self.conn.commit()
 
@@ -21,12 +21,7 @@ class DBHelper:
         args = (text, )
         self.conn.execute(stmt, args)
         self.conn.commit()
-        
-    def add_username(self, username, id):
-        stmt = "UPDATE utenti SET USER = ? WHERE ID = "+str(id)
-        args = (username, )
-        self.conn.execute(stmt, args)
-        self.conn.commit()
+
 
     def add_chat(self, tabella, chat_id):
         if tabella == "utenti":
@@ -41,9 +36,20 @@ class DBHelper:
 
         self.conn.execute(stmt, args)
         self.conn.commit()
+        
+    def add_utente(self, utente_id, username, first_name):
+        stmt = "INSERT INTO utenti (ID, COIN, USERNAME, FIRST_NAME) VALUES (?, ?, ?, ?)"
+        args = (utente_id, 0, username, first_name)
+        self.conn.execute(stmt, args)
+        self.conn.commit()
 
-    def add_utente(self, id, int, item):
+    def add_utente_coin(self, id, int, item):
         stmt = "UPDATE utenti SET "+item+" = "+item+" + "+str(int)+" WHERE ID = "+str(id)
+        self.conn.execute(stmt)
+        self.conn.commit()
+        
+    def add_utente_name(self, id, item, val):
+        stmt = "UPDATE utenti SET "+item+" = '"+val+"' WHERE ID = "+str(id)
         self.conn.execute(stmt)
         self.conn.commit()
 
